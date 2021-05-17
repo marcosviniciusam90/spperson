@@ -1,0 +1,637 @@
+{
+	"info": {
+		"_postman_id": "b6e03923-6a25-42bc-b669-cbde96a7612d",
+		"name": "SPPerson",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Autenticação",
+			"item": [
+				{
+					"name": "Access Token",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "react123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "react",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client",
+									"value": "react",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/oauth/token",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "refresh_token",
+									"type": "text"
+								},
+								{
+									"key": "refresh_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIyODkyMiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiJmMDg1MzcyMC00ZmNmLTRlMDktOGQ5Yi1kZTYxMjJlODkxY2QiLCJjbGllbnRfaWQiOiJyZWFjdCJ9.jcuGwmMq3bZzlthLNQ4VCXvpffNqUxtM77ziZ-PWl6U",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/oauth/token",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Revoke Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIyODkyMiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiJmMDg1MzcyMC00ZmNmLTRlMDktOGQ5Yi1kZTYxMjJlODkxY2QiLCJjbGllbnRfaWQiOiJyZWFjdCJ9.jcuGwmMq3bZzlthLNQ4VCXvpffNqUxtM77ziZ-PWl6U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/tokens/revoke",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tokens",
+								"revoke"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BASIC",
+			"item": [
+				{
+					"name": "Pessoa",
+					"item": [
+						{
+							"name": "Pessoas paged",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "marcos",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "marcos",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/pessoas?page=0&linesPerPage=5&direction=ASC&orderBy=nome",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"pessoas"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "linesPerPage",
+											"value": "5"
+										},
+										{
+											"key": "direction",
+											"value": "ASC"
+										},
+										{
+											"key": "orderBy",
+											"value": "nome"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pessoa by id",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "marcos",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "marcos",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/pessoas/2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"pessoas",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Nova pessoa",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "marcos",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "marcos",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nome\": \"Adenilson Alves\",\n    \"sexo\": \"masculino\",\n    \"email\": \"adenilson@gmail.com\",\n    \"dataNascimento\": \"1971-10-19\",\n    \"naturalidade\": \"Colorado-PR\",\n    \"nacionalidade\": \"brasileiro\",\n    \"cpf\": \"047.893.040-27\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/pessoas",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"pessoas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar pessoa",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "marcos",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "marcos",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\": \"Antonina Rocha de Almeida Mendonca\",\r\n    \"sexo\": \"feminino\",\r\n    \"email\": \"antoninaram64@gmail.com\",\r\n    \"dataNascimento\": \"1966-05-03\",\r\n    \"naturalidade\": \"Colorado-PR\",\r\n    \"nacionalidade\": \"brasileiro\",\r\n    \"cpf\": \"795.884.570-76\"\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{host}}/pessoas/2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"pessoas",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Excluir pessoa",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "marcos",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "marcos",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/pessoas/2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"pessoas",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a128a52f-9ef0-4d50-a506-4c3a7f06c56b",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "d55f7d4f-7edc-4ff5-882d-a9cc92dae40f",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "OAUTH2",
+			"item": [
+				{
+					"name": "Pessoa",
+					"item": [
+						{
+							"name": "Pessoas paged",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIyOTM3MCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiIyMmJiYWI3OS1kOGZjLTQ5N2ItYWI3OS02NDMwOTZlYzg4YTciLCJjbGllbnRfaWQiOiJyZWFjdCJ9.Xr_-4-tZYzto77z6ORLy8L-A5PUdeRAoLsNiRUcbXg8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/pessoas?page=0&linesPerPage=5&direction=ASC&orderBy=nome",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"pessoas"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "linesPerPage",
+											"value": "5"
+										},
+										{
+											"key": "direction",
+											"value": "ASC"
+										},
+										{
+											"key": "orderBy",
+											"value": "nome"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pessoa by id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIyOTM3MCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiIyMmJiYWI3OS1kOGZjLTQ5N2ItYWI3OS02NDMwOTZlYzg4YTciLCJjbGllbnRfaWQiOiJyZWFjdCJ9.Xr_-4-tZYzto77z6ORLy8L-A5PUdeRAoLsNiRUcbXg8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/pessoas/2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"pessoas",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Nova pessoa",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIyOTM3MCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiIyMmJiYWI3OS1kOGZjLTQ5N2ItYWI3OS02NDMwOTZlYzg4YTciLCJjbGllbnRfaWQiOiJyZWFjdCJ9.Xr_-4-tZYzto77z6ORLy8L-A5PUdeRAoLsNiRUcbXg8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nome\": \"Adenilson Alves\",\n    \"sexo\": \"masculino\",\n    \"email\": \"adenilson@gmail.com\",\n    \"dataNascimento\": \"1971-10-19\",\n    \"naturalidade\": \"Colorado-PR\",\n    \"nacionalidade\": \"brasileiro\",\n    \"cpf\": \"047.893.040-27\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/pessoas",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"pessoas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar pessoa",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIyOTM3MCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiIyMmJiYWI3OS1kOGZjLTQ5N2ItYWI3OS02NDMwOTZlYzg4YTciLCJjbGllbnRfaWQiOiJyZWFjdCJ9.Xr_-4-tZYzto77z6ORLy8L-A5PUdeRAoLsNiRUcbXg8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\": \"Antonina Rocha de Almeida Mendonca\",\r\n    \"sexo\": \"feminino\",\r\n    \"email\": \"antoninaram64@gmail.com\",\r\n    \"dataNascimento\": \"1966-05-03\",\r\n    \"naturalidade\": \"Colorado-PR\",\r\n    \"nacionalidade\": \"brasileiro\",\r\n    \"cpf\": \"795.884.570-76\"\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{host}}/pessoas/2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"pessoas",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Excluir pessoa",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIyOTM3MCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiIyMmJiYWI3OS1kOGZjLTQ5N2ItYWI3OS02NDMwOTZlYzg4YTciLCJjbGllbnRfaWQiOiJyZWFjdCJ9.Xr_-4-tZYzto77z6ORLy8L-A5PUdeRAoLsNiRUcbXg8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/pessoas/2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"pessoas",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a128a52f-9ef0-4d50-a506-4c3a7f06c56b",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "d55f7d4f-7edc-4ff5-882d-a9cc92dae40f",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		}
+	]
+}

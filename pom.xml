@@ -36,6 +36,13 @@
 			<version>2.3.5.RELEASE</version>
 		</dependency>
 
+		<!-- Para configurar JWT no Access Token das requisições -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-jwt</artifactId>
+			<version>1.0.11.RELEASE</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>

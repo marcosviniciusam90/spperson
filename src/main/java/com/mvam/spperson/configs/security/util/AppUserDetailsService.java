@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -22,10 +21,9 @@ public class AppUserDetailsService implements UserDetailsService {
     private UsuarioRepository usuarioRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<Usuario> usuarioOptional = usuarioRepository.findByEmail(email);
-        Usuario usuario = usuarioOptional.orElseThrow(
-                () -> new UsernameNotFoundException("Usuario e/ou senha incorreto(s)"));
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Usuario usuario = usuarioRepository.findByUsuario(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario e/ou senha incorreto(s)"));
 
         return new UsuarioSistema(usuario, getPermissoes(usuario));
     }
