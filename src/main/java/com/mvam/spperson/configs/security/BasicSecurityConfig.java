@@ -40,7 +40,7 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
         }
 
         http.authorizeRequests()
-                .antMatchers("/h2-console/**", "/swagger-ui/**", "/source").permitAll()
+                .antMatchers("/h2-console/**", "/swagger-ui/**", "/api-docs", "/source").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic() //Basic Security
