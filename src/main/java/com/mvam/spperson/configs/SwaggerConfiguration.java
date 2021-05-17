@@ -1,25 +1,26 @@
 package com.mvam.spperson.configs;
 
-import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
-import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
+import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.servers.Server;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 
+import java.util.Arrays;
 import java.util.Optional;
 
 @Configuration
-@SecurityScheme(
-        name = "basicAuth",
-        type = SecuritySchemeType.HTTP,
-        scheme = "basic"
-)
 public class SwaggerConfiguration {
+
+    @Autowired
+    private Environment environment;
+
     private final String title;
     private final String description;
     private final String termsOfServiceUrl;
@@ -56,7 +57,7 @@ public class SwaggerConfiguration {
     @Bean
     public OpenAPI getOpenAPI() {
         OpenAPI api = new OpenAPI()
-                .components(new Components())
+                .components(new Components().addSecuritySchemes("authScheme", securityScheme()))
                 .info(
                         new Info()
                                 .title(title)
@@ -76,5 +77,17 @@ public class SwaggerConfiguration {
             );
         }
         return api;
+    }
+
+    private SecurityScheme securityScheme() {
+        if (Arrays.asList(environment.getActiveProfiles()).contains("oauth-security")) {
+            return new SecurityScheme()
+                    .type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")
+                    .in(SecurityScheme.In.HEADER).name("Authorization");
+        }
+
+        return new SecurityScheme()
+                .type(SecurityScheme.Type.HTTP).scheme("basic");
+
     }
 }
