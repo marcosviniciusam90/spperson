@@ -33,7 +33,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         }
 
         http.authorizeRequests()
-                .antMatchers("/h2-console/**", "/source").permitAll()
+                .antMatchers("/h2-console/**", "/swagger-ui/**", "/source").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
