@@ -1,6 +1,6 @@
 package com.mvam.spperson.configs.security;
 
-import com.mvam.spperson.configs.token.CustomTokenEnhancer;
+import com.mvam.spperson.configs.security.token.CustomTokenEnhancer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

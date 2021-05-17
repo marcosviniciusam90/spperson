@@ -1,4 +1,4 @@
-package com.mvam.spperson.configs.token;
+package com.mvam.spperson.configs.security.token;
 
 import com.mvam.spperson.configs.security.util.UsuarioSistema;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
