@@ -4,6 +4,7 @@ import com.mvam.spperson.dto.PessoaDTO;
 import com.mvam.spperson.entities.Pessoa;
 import com.mvam.spperson.mappers.PessoaMapper;
 import com.mvam.spperson.repositories.PessoaRepository;
+import com.mvam.spperson.services.exceptions.PessoaComMesmoCPFException;
 import com.mvam.spperson.services.exceptions.RecursoNaoEncontradoException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,7 @@ public class PessoaService {
 
     @Transactional
     public PessoaDTO create(PessoaDTO pessoaDTO) {
+        checkIfExistsPersonWithTheSameCPFInCreate(pessoaDTO.getCpf());
         Pessoa pessoa = PESSOA_MAPPER.dtoToEntity(pessoaDTO);
         pessoa = pessoaRepository.save(pessoa);
         return PESSOA_MAPPER.entityToDTO(pessoa);
@@ -45,6 +47,7 @@ public class PessoaService {
 
     @Transactional
     public PessoaDTO update(Long id, PessoaDTO pessoaDTO) {
+        checkIfExistsPersonWithTheSameCPFInUpdate(id, pessoaDTO.getCpf());
         try {
             Pessoa previousPessoa = pessoaRepository.getOne(id);
 
@@ -64,6 +67,24 @@ public class PessoaService {
             pessoaRepository.deleteById(id);
         } catch (EmptyResultDataAccessException ex) {
             throw new RecursoNaoEncontradoException(id);
+        }
+    }
+
+    private void checkIfExistsPersonWithTheSameCPFInCreate(String cpf) {
+        if(pessoaRepository.existsByCpf(cpf)) {
+            throw new PessoaComMesmoCPFException(cpf);
+        }
+    }
+
+    private void checkIfExistsPersonWithTheSameCPFInUpdate(Long id, String cpf) {
+        Optional<Pessoa> pessoaOptional = pessoaRepository.findByCpf(cpf);
+
+        if(pessoaOptional.isPresent()) {
+            Pessoa pessoa = pessoaOptional.get();
+
+            if (!id.equals(pessoa.getId())) {
+                throw new PessoaComMesmoCPFException(cpf);
+            }
         }
     }
 }

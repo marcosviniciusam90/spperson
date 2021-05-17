@@ -1,5 +1,6 @@
 package com.mvam.spperson.resources.exceptions;
 
+import com.mvam.spperson.services.exceptions.PessoaComMesmoCPFException;
 import com.mvam.spperson.services.exceptions.RecursoNaoEncontradoException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,15 @@ public class RecursosExceptionHandler {
         return ResponseEntity.status(status).body(erroDTO);
     }
 
+    @ExceptionHandler(PessoaComMesmoCPFException.class)
+    public ResponseEntity<ErroDTO> pessoaComMesmoCPFException(PessoaComMesmoCPFException ex, HttpServletRequest request) {
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+        ErroDTO erroDTO = criarErroDTO(request, status, "Pessoa ja existente", ex.getMessage(), null);
+        return ResponseEntity.status(status).body(erroDTO);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    protected ResponseEntity<ErroDTO> methodArgumentNotValidException(MethodArgumentNotValidException ex, HttpServletRequest request) {
+    public ResponseEntity<ErroDTO> methodArgumentNotValidException(MethodArgumentNotValidException ex, HttpServletRequest request) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
         List<ErroDTO.Campos> fields = new ArrayList<>();
 
