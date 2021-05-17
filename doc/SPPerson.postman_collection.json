@@ -425,7 +425,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIzMDI1NCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiIwM2JhYTY3Yy04YTliLTQ1MDAtYWMwMy0yMWEwYjkzY2VhYzQiLCJjbGllbnRfaWQiOiJyZWFjdCJ9.4kcjNIK18P8kl24UJ0dtilqtns7vghvV12HdUdwceN4",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIzMTY4MywiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiIxNTlmNjUxNi1mZTU3LTRmMDQtOGJiYS0wYmRhMjU2MjlmZDgiLCJjbGllbnRfaWQiOiJyZWFjdCJ9.ygTOdSfZrSI1yGnWvC9d5r3s14EpKX7lM7Uw0a3Immg",
 											"type": "string"
 										}
 									]
@@ -474,7 +474,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIzMDEyMywiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiI3MmI2YmQxMC02YmI0LTQ5YjQtYjczZC00OTlhODdlNTExMzYiLCJjbGllbnRfaWQiOiJyZWFjdCJ9.GPbDBGbYajwkQe5yUJqaFvMs0zqZqVoyL2GGH9IVuiQ",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIzMzk1MCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiIxNTI0ODcyNy00ODNlLTRkMWEtYmEwYy0zMDNhZDljMDEzOGIiLCJjbGllbnRfaWQiOiJyZWFjdCJ9.7ezBUbJpRREeYlPyE4ck0AdbmoURcdD39RtNRhd7mEk",
 											"type": "string"
 										}
 									]
@@ -506,7 +506,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIzMDI1NCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiIwM2JhYTY3Yy04YTliLTQ1MDAtYWMwMy0yMWEwYjkzY2VhYzQiLCJjbGllbnRfaWQiOiJyZWFjdCJ9.4kcjNIK18P8kl24UJ0dtilqtns7vghvV12HdUdwceN4",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIzMzk1MCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiIxNTI0ODcyNy00ODNlLTRkMWEtYmEwYy0zMDNhZDljMDEzOGIiLCJjbGllbnRfaWQiOiJyZWFjdCJ9.7ezBUbJpRREeYlPyE4ck0AdbmoURcdD39RtNRhd7mEk",
 											"type": "string"
 										}
 									]
@@ -522,7 +522,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"nome\": \"Adenilson Alves\",\n    \"sexo\": \"masculino\",\n    \"email\": \"adenilson@gmail.com\",\n    \"dataNascimento\": \"1971-10-19\",\n    \"naturalidade\": \"Colorado-PR\",\n    \"nacionalidade\": \"brasileiro\",\n    \"cpf\": \"047.893.040-27\"\n}"
+									"raw": "{\n    \"nome\": \"Adenilson Alves\",\n    \"sexo\": \"masculino\",\n    \"email\": \"adenilson@gmail.com\",\n    \"dataNascimento\": \"1971-10-19\",\n    \"naturalidade\": \"Colorado-PR\",\n    \"nacionalidade\": \"brasileiro\",\n    \"cpf\": \"047.893.040-28\"\n}"
 								},
 								"url": {
 									"raw": "{{host}}/pessoas",
@@ -544,7 +544,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIzMDI1NCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiIwM2JhYTY3Yy04YTliLTQ1MDAtYWMwMy0yMWEwYjkzY2VhYzQiLCJjbGllbnRfaWQiOiJyZWFjdCJ9.4kcjNIK18P8kl24UJ0dtilqtns7vghvV12HdUdwceN4",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIzMzQ2NywiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiJhODc5MTMzOC04ZTJhLTRkODktOTI0MC0xZGJlOTE2M2M3NWUiLCJjbGllbnRfaWQiOiJyZWFjdCJ9.Q2ifMOgOUWJH38ERfGrGzjczbHQASJ5IFEXoMIHQkjI",
 											"type": "string"
 										}
 									]
@@ -560,7 +560,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"nome\": \"Antonina Rocha de Almeida Mendonca\",\r\n    \"sexo\": \"feminino\",\r\n    \"email\": \"antoninaram64@gmail.com\",\r\n    \"dataNascimento\": \"1966-05-03\",\r\n    \"naturalidade\": \"Colorado-PR\",\r\n    \"nacionalidade\": \"brasileiro\",\r\n    \"cpf\": \"795.884.570-76\"\r\n}\r\n"
+									"raw": "{\r\n    \"nome\": \"Antonina Rocha de A. Mendonca\",\r\n    \"sexo\": \"feminino\",\r\n    \"email\": \"antoninaram64@gmail.com\",\r\n    \"dataNascimento\": \"1966-05-03\",\r\n    \"naturalidade\": \"Colorado-PR\",\r\n    \"nacionalidade\": \"brasileiro\",\r\n    \"cpf\": \"795.884.570-76\"\r\n}\r\n"
 								},
 								"url": {
 									"raw": "{{host}}/pessoas/2",
