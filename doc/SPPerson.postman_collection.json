@@ -6,163 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "Autenticação",
-			"item": [
-				{
-					"name": "Access Token",
-					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "react123",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "react",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/x-www-form-urlencoded",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "client",
-									"value": "react",
-									"type": "text"
-								},
-								{
-									"key": "username",
-									"value": "admin",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "admin",
-									"type": "text"
-								},
-								{
-									"key": "grant_type",
-									"value": "password",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{host}}/oauth/token",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"oauth",
-								"token"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Refresh Token",
-					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "admin",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "admin",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/x-www-form-urlencoded"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "grant_type",
-									"value": "refresh_token",
-									"type": "text"
-								},
-								{
-									"key": "refresh_token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIyODkyMiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiJmMDg1MzcyMC00ZmNmLTRlMDktOGQ5Yi1kZTYxMjJlODkxY2QiLCJjbGllbnRfaWQiOiJyZWFjdCJ9.jcuGwmMq3bZzlthLNQ4VCXvpffNqUxtM77ziZ-PWl6U",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{host}}/oauth/token",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"oauth",
-								"token"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Revoke Token",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIyODkyMiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiJmMDg1MzcyMC00ZmNmLTRlMDktOGQ5Yi1kZTYxMjJlODkxY2QiLCJjbGllbnRfaWQiOiJyZWFjdCJ9.jcuGwmMq3bZzlthLNQ4VCXvpffNqUxtM77ziZ-PWl6U",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{host}}/tokens/revoke",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"tokens",
-								"revoke"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "BASIC",
 			"item": [
 				{
@@ -414,6 +257,164 @@
 			"name": "OAUTH2",
 			"item": [
 				{
+					"name": "Autenticação",
+					"item": [
+						{
+							"name": "Access Token",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "react123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "react",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "client",
+											"value": "react",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/oauth/token",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"oauth",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Refresh Token",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "refresh_token",
+											"type": "text"
+										},
+										{
+											"key": "refresh_token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIyODkyMiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiJmMDg1MzcyMC00ZmNmLTRlMDktOGQ5Yi1kZTYxMjJlODkxY2QiLCJjbGllbnRfaWQiOiJyZWFjdCJ9.jcuGwmMq3bZzlthLNQ4VCXvpffNqUxtM77ziZ-PWl6U",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/oauth/token",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"oauth",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Revoke Token",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIzMDI1NCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiIwM2JhYTY3Yy04YTliLTQ1MDAtYWMwMy0yMWEwYjkzY2VhYzQiLCJjbGllbnRfaWQiOiJyZWFjdCJ9.4kcjNIK18P8kl24UJ0dtilqtns7vghvV12HdUdwceN4",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/tokens/revoke",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"tokens",
+										"revoke"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
 					"name": "Pessoa",
 					"item": [
 						{
@@ -424,7 +425,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIyOTM3MCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiIyMmJiYWI3OS1kOGZjLTQ5N2ItYWI3OS02NDMwOTZlYzg4YTciLCJjbGllbnRfaWQiOiJyZWFjdCJ9.Xr_-4-tZYzto77z6ORLy8L-A5PUdeRAoLsNiRUcbXg8",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIzMDI1NCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiIwM2JhYTY3Yy04YTliLTQ1MDAtYWMwMy0yMWEwYjkzY2VhYzQiLCJjbGllbnRfaWQiOiJyZWFjdCJ9.4kcjNIK18P8kl24UJ0dtilqtns7vghvV12HdUdwceN4",
 											"type": "string"
 										}
 									]
@@ -473,7 +474,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIyOTM3MCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiIyMmJiYWI3OS1kOGZjLTQ5N2ItYWI3OS02NDMwOTZlYzg4YTciLCJjbGllbnRfaWQiOiJyZWFjdCJ9.Xr_-4-tZYzto77z6ORLy8L-A5PUdeRAoLsNiRUcbXg8",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIzMDEyMywiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiI3MmI2YmQxMC02YmI0LTQ5YjQtYjczZC00OTlhODdlNTExMzYiLCJjbGllbnRfaWQiOiJyZWFjdCJ9.GPbDBGbYajwkQe5yUJqaFvMs0zqZqVoyL2GGH9IVuiQ",
 											"type": "string"
 										}
 									]
@@ -505,7 +506,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIyOTM3MCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiIyMmJiYWI3OS1kOGZjLTQ5N2ItYWI3OS02NDMwOTZlYzg4YTciLCJjbGllbnRfaWQiOiJyZWFjdCJ9.Xr_-4-tZYzto77z6ORLy8L-A5PUdeRAoLsNiRUcbXg8",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIzMDI1NCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiIwM2JhYTY3Yy04YTliLTQ1MDAtYWMwMy0yMWEwYjkzY2VhYzQiLCJjbGllbnRfaWQiOiJyZWFjdCJ9.4kcjNIK18P8kl24UJ0dtilqtns7vghvV12HdUdwceN4",
 											"type": "string"
 										}
 									]
@@ -543,7 +544,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIyOTM3MCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiIyMmJiYWI3OS1kOGZjLTQ5N2ItYWI3OS02NDMwOTZlYzg4YTciLCJjbGllbnRfaWQiOiJyZWFjdCJ9.Xr_-4-tZYzto77z6ORLy8L-A5PUdeRAoLsNiRUcbXg8",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJub21lIjoiQWRtaW5pc3RyYWRvciIsImV4cCI6MTYyMTIzMDI1NCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9SRU1PVkVSX1BFU1NPQSIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSJdLCJqdGkiOiIwM2JhYTY3Yy04YTliLTQ1MDAtYWMwMy0yMWEwYjkzY2VhYzQiLCJjbGllbnRfaWQiOiJyZWFjdCJ9.4kcjNIK18P8kl24UJ0dtilqtns7vghvV12HdUdwceN4",
 											"type": "string"
 										}
 									]
