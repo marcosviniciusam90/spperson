@@ -5,6 +5,7 @@
 - Banco de dados: http://localhost:8080/h2-console
 - Swagger JSON: http://localhost:8080/api-docs
 - Swagger UI: http://localhost:8080/swagger-ui/index.html?url=/api-docs
+- Coleção de requisições do Postman: [Link](https://github.com/marcosviniciusam90/spperson/blob/master/doc/SPPerson.postman_collection.json)
 - Imagem docker API: em breve
 - API em produção: em breve
 
