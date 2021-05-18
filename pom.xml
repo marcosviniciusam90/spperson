@@ -43,6 +43,7 @@
 			<version>1.0.11.RELEASE</version>
 		</dependency>
 
+		<!-- Para geração do swagger executável -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
