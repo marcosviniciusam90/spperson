@@ -2,12 +2,20 @@
 > API REST para cadastro de pessoas
 
 ## Links
-- Banco de dados: http://localhost:8080/h2-console
-- Swagger JSON: http://localhost:8080/api-docs
-- Swagger UI: http://localhost:8080/swagger-ui/index.html?url=/api-docs
 - Coleção de requisições do Postman: [Link](https://github.com/marcosviniciusam90/spperson/blob/master/doc/SPPerson.postman_collection.json)
 - Imagem docker API: em breve
-- API em produção: em breve
+
+### API em produção
+- Endereço: https://mvam-spperson.herokuapp.com
+- Banco de dados: https://mvam-spperson.herokuapp.com/h2-console  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JDBC URL: `jdbc:h2:mem:testdb`
+- Swagger JSON: https://mvam-spperson.herokuapp.com/api-docs
+- Swagger UI: https://mvam-spperson.herokuapp.com/swagger-ui/index.html?url=/api-docs
+
+### API local
+- Endereço: http://localhost:8080
+- Banco de dados: http://localhost:8080/h2-console  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JDBC URL: `jdbc:h2:mem:testdb`
+- Swagger JSON: http://localhost:8080/api-docs
+- Swagger UI: http://localhost:8080/swagger-ui/index.html?url=/api-docs
 
 ## O que foi utilizado?
 - Java
