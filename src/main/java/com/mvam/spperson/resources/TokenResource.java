@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/tokens")
-public class TokenResource {
+public class TokenResource implements SwaggerSecuredRestController {
 
     @DeleteMapping("/revoke")
     public void revoke(HttpServletRequest request, HttpServletResponse response) {

@@ -19,7 +19,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/pessoas")
 @AllArgsConstructor(onConstructor = @__(@Autowired))
-public class PessoaResource {
+public class PessoaResource implements SwaggerSecuredRestController {
 
     private final PessoaService pessoaService;
 
