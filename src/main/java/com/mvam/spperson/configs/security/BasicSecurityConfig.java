@@ -19,6 +19,12 @@ import java.util.Arrays;
 @EnableWebSecurity
 public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    protected static final String[] WHITELIST = {
+            "/h2-console/**",
+            "/swagger-ui/**",
+            "/api-docs",
+            "/source"};
+
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -40,7 +46,7 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
         }
 
         http.authorizeRequests()
-                .antMatchers("/h2-console/**", "/swagger-ui/**", "/api-docs", "/source").permitAll()
+                .antMatchers(WHITELIST).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic() //Basic Security

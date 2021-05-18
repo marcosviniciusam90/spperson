@@ -18,6 +18,8 @@ import java.util.Optional;
 @Configuration
 public class SwaggerConfiguration {
 
+    public static final String AUTH_SCHEME = "authScheme";
+
     @Autowired
     private Environment environment;
 
@@ -57,7 +59,7 @@ public class SwaggerConfiguration {
     @Bean
     public OpenAPI getOpenAPI() {
         OpenAPI api = new OpenAPI()
-                .components(new Components().addSecuritySchemes("authScheme", securityScheme()))
+                .components(new Components().addSecuritySchemes(AUTH_SCHEME, securityScheme()))
                 .info(
                         new Info()
                                 .title(title)
@@ -70,12 +72,11 @@ public class SwaggerConfiguration {
                                                 .url(licenseUrl)
                                 )
                 );
-        if (server.isPresent()) {
-            api.addServersItem(
-                    new Server()
-                            .url(server.get())
-            );
-        }
+
+        server.ifPresent(s -> api.addServersItem(
+                new Server()
+                        .url(s)
+        ));
         return api;
     }
 
