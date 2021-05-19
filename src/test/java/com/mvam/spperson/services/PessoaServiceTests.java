@@ -68,11 +68,10 @@ class PessoaServiceTests {
     void dadoPessoaEIdExistenteEntaoDeveAtualizarComSucesso() {
         Long id = FAKER.number().randomNumber();
         PessoaDTO pessoaDTO = createPessoaDTO(null);
-
-        when(pessoaRepository.existsByIdNotLikeAndCpf(id, pessoaDTO.getCpf())).thenReturn(false);
-
         Pessoa previousPessoa = createPessoa(id);
-        when(pessoaRepository.getOne(id)).thenReturn(previousPessoa);
+
+        when(pessoaRepository.findById(id)).thenReturn(Optional.of(previousPessoa));
+        when(pessoaRepository.existsByIdNotLikeAndCpf(id, pessoaDTO.getCpf())).thenReturn(false);
 
         Pessoa pessoa = PESSOA_MAPPER.dtoToEntity(pessoaDTO);
         pessoa.setId(previousPessoa.getId());
@@ -85,7 +84,9 @@ class PessoaServiceTests {
     void dadoPessoaComCPFJaExistenteEntaoDeveLancarExcecaoAoAtualizar() {
         Long id = FAKER.number().randomNumber();
         PessoaDTO pessoaDTO = createPessoaDTO(null);
+        Pessoa previousPessoa = createPessoa(id);
 
+        when(pessoaRepository.findById(id)).thenReturn(Optional.of(previousPessoa));
         when(pessoaRepository.existsByIdNotLikeAndCpf(id, pessoaDTO.getCpf())).thenReturn(true);
 
         assertThrows(PessoaComMesmoCPFException.class, () -> pessoaService.update(id, pessoaDTO));

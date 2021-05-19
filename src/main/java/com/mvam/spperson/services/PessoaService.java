@@ -14,7 +14,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 
 @Service
@@ -50,21 +49,20 @@ public class PessoaService {
 
     @Transactional
     public PessoaDTO update(Long id, PessoaDTO pessoaDTO) {
+        Pessoa previousPessoa = pessoaRepository.findById(id)
+                .orElseThrow(() -> new RecursoNaoEncontradoException(id));
+
         String cpf = pessoaDTO.getCpf();
         if(pessoaRepository.existsByIdNotLikeAndCpf(id, cpf)) {
             throw new PessoaComMesmoCPFException(cpf);
         }
-        try {
-            Pessoa previousPessoa = pessoaRepository.getOne(id);
 
-            Pessoa pessoa = PESSOA_MAPPER.dtoToEntity(pessoaDTO);
-            pessoa.setId(previousPessoa.getId());
-            pessoa.setCriadoEm(previousPessoa.getCriadoEm());
-            pessoa = pessoaRepository.save(pessoa);
-            return PESSOA_MAPPER.entityToDTO(pessoa);
-        } catch (EntityNotFoundException ex) {
-            throw new RecursoNaoEncontradoException(id);
-        }
+        Pessoa pessoa = PESSOA_MAPPER.dtoToEntity(pessoaDTO);
+        pessoa.setId(previousPessoa.getId());
+        pessoa.setCriadoEm(previousPessoa.getCriadoEm());
+        pessoa = pessoaRepository.save(pessoa);
+        return PESSOA_MAPPER.entityToDTO(pessoa);
+
     }
 
     @Transactional
