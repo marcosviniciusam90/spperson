@@ -3,7 +3,8 @@ package com.mvam.spperson.configs;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
-import io.swagger.v3.oas.models.info.License;
+import io.swagger.v3.oas.models.security.OAuthFlow;
+import io.swagger.v3.oas.models.security.OAuthFlows;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.servers.Server;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,8 @@ public class SwaggerConfiguration {
     private final String title;
     private final String description;
     private final String termsOfServiceUrl;
-    private final String license;
-    private final String licenseUrl;
     private final String version;
+    private final String apiUrl;
     private final Optional<String> server;
 
     public SwaggerConfiguration(
@@ -38,21 +38,18 @@ public class SwaggerConfiguration {
                     String description,
             @Value("${spring.application.swagger.terms-of-service-url}")
                     String termsOfServiceUrl,
-            @Value("${spring.application.swagger.license}")
-                    String license,
-            @Value("${spring.application.swagger.license-url}")
-                    String licenseUrl,
             @Value("${spring.application.swagger.version}")
                     String version,
+            @Value("${spring.application.swagger.api-url}")
+                    String apiUrl,
             @Value("${springdoc.server:#{null}}")
                     Optional<String> server
     ) {
         this.title = title;
         this.description = description;
         this.termsOfServiceUrl = termsOfServiceUrl;
-        this.license = license;
-        this.licenseUrl = licenseUrl;
         this.version = version;
+        this.apiUrl = apiUrl;
         this.server = server;
     }
 
@@ -63,14 +60,9 @@ public class SwaggerConfiguration {
                 .info(
                         new Info()
                                 .title(title)
-                                .description(description)
+                                .description(description + " Para obter autorização para realizar as requisições leia as instruções contidas no link abaixo.")
                                 .termsOfService(termsOfServiceUrl)
                                 .version(version)
-                                .license(
-                                        new License()
-                                                .name(license)
-                                                .url(licenseUrl)
-                                )
                 );
 
         server.ifPresent(s -> api.addServersItem(
@@ -83,8 +75,12 @@ public class SwaggerConfiguration {
     private SecurityScheme securityScheme() {
         if (Arrays.asList(environment.getActiveProfiles()).contains("oauth-security")) {
             return new SecurityScheme()
-                    .type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")
-                    .in(SecurityScheme.In.HEADER).name("Authorization");
+                    .type(SecurityScheme.Type.OAUTH2)
+                    .flows(new OAuthFlows()
+                            .password(new OAuthFlow()
+                                    .authorizationUrl(apiUrl + "/oauth/authorize")
+                                    .tokenUrl(apiUrl + "/oauth/token")));
+
         }
 
         return new SecurityScheme()
