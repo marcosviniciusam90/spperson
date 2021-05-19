@@ -17,7 +17,7 @@
 - Swagger JSON: http://localhost:8080/api-docs
 - Swagger UI: http://localhost:8080/swagger-ui/index.html?url=/api-docs
 
-## Como obter autorização para realizar requisições pelo Swagger?
+## <a name="autorizacao"></a>Como obter autorização para realizar requisições pelo Swagger?
 No swagger, quando a aplicação estiver rodando com OAuth2, clique no botão **Authorize** e informe os dados:
 - username/password: **marcos/marcos** ou **admin/admin**
 - client_id/client_secret: **react/react123**<br/><br/>
