@@ -43,3 +43,5 @@ No swagger, quando a aplicação estiver rodando com OAuth2, execute o endpoint 
 - Spring Events
 - Spring Profiles (test, basic-security/oauth-security)
 - Spring OpenAPI (Swagger UI)
+- Spring MockMvc (para testar requisições REST)
+- Mockito
