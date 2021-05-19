@@ -3,7 +3,7 @@
 
 ## Links
 - Coleção de requisições do Postman: [Link](https://github.com/marcosviniciusam90/spperson/blob/master/doc/SPPerson.postman_collection.json)
-- Imagem docker API: em breve
+- Imagem docker API: https://hub.docker.com/r/marcosviniciusam90/spperson
 
 ### API em produção
 - Endereço: https://mvam-spperson.herokuapp.com
