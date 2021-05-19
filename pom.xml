@@ -16,6 +16,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<mapstruct.version>1.4.2.Final</mapstruct.version>
+		<springdoc-openapi.version>1.5.8</springdoc-openapi.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -47,7 +48,14 @@
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.5.8</version>
+			<version>${springdoc-openapi.version}</version>
+		</dependency>
+
+		<!-- Para mapear endpoints de segurança (token) no swagger gerado -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-security</artifactId>
+			<version>${springdoc-openapi.version}</version>
 		</dependency>
 
 		<dependency>

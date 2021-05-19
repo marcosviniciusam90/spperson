@@ -17,6 +17,18 @@
 - Swagger JSON: http://localhost:8080/api-docs
 - Swagger UI: http://localhost:8080/swagger-ui/index.html?url=/api-docs
 
+## Como obter Bearer Token no Swagger?
+No swagger, quando a aplicação estiver rodando com OAuth2, execute o endpoint **/oauth/token (POST)** adicionando os parâmetros abaixo para obter o token de acesso e utilizá-lo nas requisições autenticadas.
+
+<pre>
+{
+  "username": "admin",
+  "password": "admin",
+  "grant_type": "password"
+}
+</pre>
+- Obs: se abrir uma janela pedindo usuário/senha informe **react/react123**
+
 ## O que foi utilizado?
 - Java
 - Spring
