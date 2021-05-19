@@ -39,7 +39,10 @@ public class PessoaService {
 
     @Transactional
     public PessoaDTO create(PessoaDTO pessoaDTO) {
-        checkIfExistsPersonWithTheSameCPFInCreate(pessoaDTO.getCpf());
+        String cpf = pessoaDTO.getCpf();
+        if(pessoaRepository.existsByCpf(cpf)) {
+            throw new PessoaComMesmoCPFException(cpf);
+        }
         Pessoa pessoa = PESSOA_MAPPER.dtoToEntity(pessoaDTO);
         pessoa = pessoaRepository.save(pessoa);
         return PESSOA_MAPPER.entityToDTO(pessoa);
@@ -47,7 +50,10 @@ public class PessoaService {
 
     @Transactional
     public PessoaDTO update(Long id, PessoaDTO pessoaDTO) {
-        checkIfExistsPersonWithTheSameCPFInUpdate(id, pessoaDTO.getCpf());
+        String cpf = pessoaDTO.getCpf();
+        if(pessoaRepository.existsByIdNotLikeAndCpf(id, cpf)) {
+            throw new PessoaComMesmoCPFException(cpf);
+        }
         try {
             Pessoa previousPessoa = pessoaRepository.getOne(id);
 
@@ -67,24 +73,6 @@ public class PessoaService {
             pessoaRepository.deleteById(id);
         } catch (EmptyResultDataAccessException ex) {
             throw new RecursoNaoEncontradoException(id);
-        }
-    }
-
-    private void checkIfExistsPersonWithTheSameCPFInCreate(String cpf) {
-        if(pessoaRepository.existsByCpf(cpf)) {
-            throw new PessoaComMesmoCPFException(cpf);
-        }
-    }
-
-    private void checkIfExistsPersonWithTheSameCPFInUpdate(Long id, String cpf) {
-        Optional<Pessoa> pessoaOptional = pessoaRepository.findByCpf(cpf);
-
-        if(pessoaOptional.isPresent()) {
-            Pessoa pessoa = pessoaOptional.get();
-
-            if (!id.equals(pessoa.getId())) {
-                throw new PessoaComMesmoCPFException(cpf);
-            }
         }
     }
 }
