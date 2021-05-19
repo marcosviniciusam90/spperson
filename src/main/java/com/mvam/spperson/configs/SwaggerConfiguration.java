@@ -42,7 +42,7 @@ public class SwaggerConfiguration {
                     String license,
             @Value("${spring.application.swagger.license-url}")
                     String licenseUrl,
-            @Value("${spring.application.version}")
+            @Value("${spring.application.swagger.version}")
                     String version,
             @Value("${springdoc.server:#{null}}")
                     Optional<String> server
