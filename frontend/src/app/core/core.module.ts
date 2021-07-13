@@ -6,6 +6,7 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import { RouterModule } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 import { registerLocaleData } from '@angular/common';
@@ -34,7 +35,8 @@ registerLocaleData(localePt);
     ToastModule,
     ConfirmDialogModule,
     RouterModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    BrowserAnimationsModule
   ],
   exports: [
       NavbarComponent,
