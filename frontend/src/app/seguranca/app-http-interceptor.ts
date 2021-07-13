@@ -9,7 +9,7 @@ import { AuthService } from './auth.service';
 export class NotAuthenticatedError { }
 
 @Injectable()
-export class MoneyHttpInterceptor implements HttpInterceptor {
+export class AppHttpInterceptor implements HttpInterceptor {
 
   constructor(
     private authService: AuthService,

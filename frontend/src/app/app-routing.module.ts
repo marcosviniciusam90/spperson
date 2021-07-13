@@ -6,7 +6,7 @@ import { PaginaNaoEncontradaComponent } from './core/pagina-nao-encontrada.compo
 import { AuthGuard } from './seguranca/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'lancamentos', pathMatch: 'full' },
+  { path: '', redirectTo: 'pessoas', pathMatch: 'full' },
 
   {
     path: 'pagina-nao-encontrada',

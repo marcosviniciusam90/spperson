@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   login(usuario: string, senha: string): void {
     this.authService.login(usuario, senha)
       .then(() => {
-        this.router.navigate(['/lancamentos']);
+        this.router.navigate(['/pessoas']);
       })
       .catch(erro => this.errorHandlerService.handle(erro));
   }

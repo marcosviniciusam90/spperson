@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { CoreModule } from './core/core.module';
-import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { PessoasModule } from './pessoas/pessoas.module';
 import { SegurancaModule } from './seguranca/seguranca.module';
 
@@ -16,7 +15,6 @@ import { SegurancaModule } from './seguranca/seguranca.module';
   imports: [
     BrowserModule,
     CoreModule,
-    LancamentosModule,
     PessoasModule,
     HttpClientModule,
     SegurancaModule,
