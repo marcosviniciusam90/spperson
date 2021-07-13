@@ -27,14 +27,15 @@ public class PessoaResource implements SwaggerSecuredRestController {
 
     @PreAuthorize("hasAuthority('ROLE_PESQUISAR_PESSOA') and #oauth2.hasScope('read')")
     @GetMapping
-    public Page<PessoaDTO> findAllPaged(
+    public Page<PessoaDTO> findAllByNomeContaining(
+            @RequestParam(required = false, defaultValue = "") String nome,
             @RequestParam(value = "page", defaultValue = "0") Integer page,
             @RequestParam(value = "linesPerPage", defaultValue = "10") Integer linesPerPage,
             @RequestParam(value = "direction", defaultValue = "ASC") String direction,
             @RequestParam(value = "orderBy", defaultValue = "nome") String orderBy ) {
 
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Sort.Direction.valueOf(direction), orderBy);
-        return pessoaService.findAllPaged(pageRequest);
+        return pessoaService.findAllByNomeContaining(nome, pageRequest);
     }
 
     @PreAuthorize("hasAuthority('ROLE_PESQUISAR_PESSOA') and #oauth2.hasScope('read')")

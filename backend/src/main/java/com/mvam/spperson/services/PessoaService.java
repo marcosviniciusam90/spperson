@@ -24,8 +24,8 @@ public class PessoaService {
     private final PessoaRepository pessoaRepository;
 
     @Transactional(readOnly = true)
-    public Page<PessoaDTO> findAllPaged(PageRequest pageRequest) {
-        Page<Pessoa> pageList = pessoaRepository.findAll(pageRequest);
+    public Page<PessoaDTO> findAllByNomeContaining(String nome, PageRequest pageRequest) {
+        Page<Pessoa> pageList = pessoaRepository.findByNomeContainingIgnoreCase(nome, pageRequest);
         return pageList.map(PESSOA_MAPPER::entityToDTO);
     }
 
