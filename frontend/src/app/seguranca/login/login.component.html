@@ -1,0 +1,33 @@
+<div class="container center">
+
+  <form #form="ngForm">
+    <div class="p-grid p-fluid" style="max-width: 400px;">
+
+      <div class="p-col-12">
+        <h1>Login</h1>
+      </div>
+
+      <div class="p-col-12">
+        <input pInputText type="email" name="usuario" placeholder="E-mail"
+          ngModel required email #usuario>
+      </div>
+
+      <div class="p-col-12">
+        <input autocomplete="on" pInputText type="password" name="senha" placeholder="Senha"
+          ngModel required #senha>
+      </div>
+
+      <div class="p-col-12">
+        <button pButton type="submit" label="Login" [disabled]="!form.valid"
+          (click)="login(usuario.value, senha.value); senha.value = ''; senha.focus();"></button>
+      </div>
+
+      <div class="p-col-12">
+        <a href="https://github.com/marcosviniciusam90/algamoney-api#autorizacao"
+          target="_blank">Obter acesso à aplicação</a>
+      </div>
+
+    </div>
+  </form>
+
+</div>

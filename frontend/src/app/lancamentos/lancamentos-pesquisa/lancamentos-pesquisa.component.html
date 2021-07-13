@@ -1,0 +1,48 @@
+<div class="container">
+
+  <form autocomplete="off" (ngSubmit)="pesquisar()" #form>
+    <div class="p-grid">
+
+      <div class="p-col-12">
+          <h1>Lançamentos</h1>
+      </div>
+
+      <div class="p-col-12 p-fluid">
+          <label>Descrição</label>
+          <input pInputText type="text" name="descricao" [(ngModel)]="filtro.descricao" #campoDescricao>
+      </div>
+
+      <div class="p-col-12">
+          <label class="label-block">Vencimento</label>
+          <p-calendar dateFormat="dd/mm/yy"
+            name="vencimentoInicio" [(ngModel)]="filtro.dataVencimentoInicio"></p-calendar>
+
+          <label> até </label>
+          <p-calendar dateFormat="dd/mm/yy"
+            name="vencimentoFim" [(ngModel)]="filtro.dataVencimentoFim"></p-calendar>
+      </div>
+
+      <div class="p-col-12">
+          <button pButton class="mr" type="submit" label="Pesquisar"></button>
+          <button (click)="form.reset(); campoDescricao.focus();" class="p-button-secondary"
+            pButton type="button" label="Limpar"></button>
+      </div>
+
+    </div>
+  </form>
+
+  <div class="p-grid">
+    <div class="p-col-12">
+        <app-lancamentos-grid [lancamentos]="lancamentos"
+          [itensPorPagina]="filtro.itensPorPagina" [totalRegistros]="totalRegistros"
+          (paginaAlterada)="pesquisar($event)"
+          (lancamentoExcluido)="excluir($event)"></app-lancamentos-grid>
+
+    </div>
+
+    <div class="p-col-12">
+        <a pButton label="Novo Lançamento" routerLink="/lancamentos/novo"></a>
+    </div>
+  </div>
+
+</div>

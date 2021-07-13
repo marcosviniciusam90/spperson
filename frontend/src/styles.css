@@ -1,0 +1,75 @@
+:root {
+	--cor-texto: #404C51;
+    --default-height: 30px!important;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: var(--cor-texto);
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    height: var(--default-height);
+}
+
+a {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    text-decoration: underline;
+}
+
+.label-block {
+    display: block; /* Quebra de linha para a label e o próximo elemento */
+}
+
+/* @media (min-width: 1200px) */
+.container {
+    width: 95%;
+    margin: 0 auto;  /* 0 em cima e em baixo | 'auto' calcula automaticamente as margens laterais */
+}
+
+/* Telas pequenas/mobile */
+@media (min-width: 40em) {
+    .col-center {
+        text-align: center!important;
+    }
+
+    .col-right {
+        text-align: right!important;
+    }
+}
+
+.mr {
+  margin-right: 1em!important;
+}
+
+.col-mr {
+    margin-right: 0.50em!important;
+}
+
+.col-status a {
+    text-decoration: none;
+    color: var(--cor-texto);
+}
+
+.col-status a:hover {
+    text-decoration: underline;
+}
+
+.p-dropdown {
+    height: var(--default-height);
+    align-items: center;
+}
+
+.danger {
+    color: red;
+}

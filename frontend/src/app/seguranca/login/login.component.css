@@ -1,0 +1,6 @@
+.center {
+  display: flex; /* ativa o display flex */
+  align-items: center; /* com o flex ativado, centraliza o conteúdo verticalmente */
+  justify-content: center; /* com o flex ativado, centraliza o conteúdo horizontalmente */
+  height: 85vh;
+}
