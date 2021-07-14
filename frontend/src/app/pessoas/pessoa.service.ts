@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Pessoa } from './pessoa.model';
 import { environment } from 'src/environments/environment';
+import * as moment from 'moment';
 
 export class PessoaFiltro {
   nome: string;
@@ -31,7 +32,7 @@ export class PessoaService {
 
     // parâmetros de paginação
     params = params.set('page', filtro.pagina.toString());
-    params = params.set('size', filtro.itensPorPagina.toString());
+    params = params.set('linesPerPage', filtro.itensPorPagina.toString());
 
     // parâmetros do filtro de pesquisa
     if (filtro.nome) {
@@ -42,13 +43,8 @@ export class PessoaService {
       .toPromise();
   }
 
-  excluir(codigo: number): Promise<any> {
-    return this.http.delete(`${this.pessoasUrl}/${codigo}`)
-      .toPromise();
-  }
-
-  alterarStatus(codigo: number, ativo: boolean): Promise<any> {
-    return this.http.put(`${this.pessoasUrl}/${codigo}/ativo`, ativo)
+  excluir(id: number): Promise<any> {
+    return this.http.delete(`${this.pessoasUrl}/${id}`)
       .toPromise();
   }
 
@@ -58,12 +54,33 @@ export class PessoaService {
   }
 
   atualizar(pessoa: Pessoa): Promise<Pessoa> {
-    return this.http.put<Pessoa>(`${this.pessoasUrl}/${pessoa.codigo}`, pessoa)
-      .toPromise();
+    return this.http.put<Pessoa>(`${this.pessoasUrl}/${pessoa.id}`, pessoa)
+      .toPromise()
+      .then(response => {
+        const pessoaAlterada = response;
+
+        this.converterStringsParaDatas([pessoaAlterada]);
+
+        return pessoaAlterada;
+      });
   }
 
-  buscarPorCodigo(codigo: number): Promise<Pessoa> {
-    return this.http.get<Pessoa>(`${this.pessoasUrl}/${codigo}`)
-      .toPromise();
+  buscarPorId(id: number): Promise<Pessoa> {
+    return this.http.get<Pessoa>(`${this.pessoasUrl}/${id}`)
+      .toPromise()
+      .then(response => {
+        const pessoa = response;
+
+        this.converterStringsParaDatas([pessoa]);
+
+        return pessoa;
+      });
+  }
+
+  private converterStringsParaDatas(pessoas: Pessoa[]): void {
+    for (const pessoa of pessoas) {
+      pessoa.dataNascimento = moment(pessoa.dataNascimento,
+        'YYYY-MM-DD').toDate();
+    }
   }
 }

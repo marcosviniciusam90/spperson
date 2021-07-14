@@ -19,7 +19,6 @@ export class PessoasGridComponent {
 
     @Output() paginaAlterada = new EventEmitter();
     @Output() pessoaExcluida = new EventEmitter();
-    @Output() statusAlterado = new EventEmitter();
 
     @ViewChild('tabela') grid: Table;
 
@@ -43,18 +42,14 @@ export class PessoasGridComponent {
       this.confirmationService.confirm({
         header: `Excluir: ${pessoa.nome}`,
         message: 'Tem certeza que deseja excluir?',
-        accept: () => this.excluir(pessoa.codigo)
+        accept: () => this.excluir(pessoa.id)
         // reject
       });
 
     }
 
-    excluir(pessoaCodigo: number): void {
-      this.pessoaExcluida.emit({ pessoaCodigo, paginaAtual: this.paginaAtual });
-    }
-
-    alterarStatus(pessoa: Pessoa): void {
-      this.statusAlterado.emit(pessoa);
+    excluir(pessoaId: number): void {
+      this.pessoaExcluida.emit({ pessoaId, paginaAtual: this.paginaAtual });
     }
 
 }

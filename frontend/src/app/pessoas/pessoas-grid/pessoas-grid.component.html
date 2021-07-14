@@ -6,10 +6,11 @@
     #tabela>
     <ng-template pTemplate="header">
         <tr>
-            <th class="p-col-5">Nome</th>
-            <th class="p-col-4">Cidade</th>
-            <th class="p-col-1">Estado</th>
-            <th class="p-col-1 col-center">Status</th>
+            <th class="p-col-3">Nome</th>
+            <th class="p-col-3">Email</th>
+            <th class="p-col-1">Data Nasc.</th>
+            <th class="p-col-2">Naturalidade</th>
+            <th class="p-col-2">CPF</th>
             <th class="p-col-1"></th>
         </tr>
     </ng-template>
@@ -20,23 +21,24 @@
                 {{pessoa.nome}}
             </td>
             <td>
-                <span class="p-column-title">Cidade</span>
-                {{pessoa.endereco.cidade}}
+                <span class="p-column-title">Email</span>
+                {{pessoa.email}}
             </td>
             <td>
-                <span class="p-column-title">Estado</span>
-                {{pessoa.endereco.estado}}
+                <span class="p-column-title">Data Nasc.</span>
+                {{pessoa.dataNascimento | date:'dd/MM/yyyy'}}
             </td>
-            <td class="col-center col-status">
-                <span class="p-column-title">Status</span>
-                <a href="javascript:;" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar'" tooltipPosition="top"
-                  (click)="alterarStatus(pessoa)">
-                    {{pessoa.ativo ? "Ativo" : "Inativo"}}
-                </a>
+            <td>
+                <span class="p-column-title">Naturalidade</span>
+                {{pessoa.naturalidade}}
+            </td>
+            <td>
+                <span class="p-column-title">CPF</span>
+                {{pessoa.cpf}}
             </td>
             <td class="col-center">
                 <a class="col-mr" pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                  [routerLink]="['/pessoas', pessoa.codigo]"></a>
+                  [routerLink]="['/pessoas', pessoa.id]"></a>
                 <button type="button" pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
                 (click)="confirmarExclusao(pessoa)"
                 [disabled]="!authService.temPermissao('ROLE_REMOVER_PESSOA')"></button>

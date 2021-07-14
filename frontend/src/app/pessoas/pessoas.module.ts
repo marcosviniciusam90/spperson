@@ -7,6 +7,8 @@ import { ButtonModule } from 'primeng/button';
 import { InputMaskModule } from 'primeng/inputmask';
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
+import {SelectButtonModule} from 'primeng/selectbutton';
+import {CalendarModule} from 'primeng/calendar';
 
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
@@ -29,6 +31,8 @@ import { PessoasRoutingModule } from './pessoas-routing.module';
     InputMaskModule,
     FormsModule,
     SharedModule,
+    SelectButtonModule,
+    CalendarModule,
     PessoasRoutingModule
   ],
   exports: []

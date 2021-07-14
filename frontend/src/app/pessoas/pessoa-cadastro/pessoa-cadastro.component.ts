@@ -14,6 +14,11 @@ import { PessoaService } from '../pessoa.service';
 })
 export class PessoaCadastroComponent implements OnInit {
 
+  sexo = [
+    { label: 'Masculino', value: 'MASCULINO'},
+    { label: 'Feminino', value: 'FEMININO'}
+  ];
+
   pessoa = new Pessoa();
 
   constructor(
@@ -27,22 +32,22 @@ export class PessoaCadastroComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle('Nova Pessoa');
-    const codigoPessoa = this.route.snapshot.params.codigo;
-    if (codigoPessoa) {
-      this.carregarPessoa(codigoPessoa);
+    const pessoaId = this.route.snapshot.params.id;
+    if (pessoaId) {
+      this.carregarPessoa(pessoaId);
     }
   }
 
   get editando(): boolean {
-    return Boolean(this.pessoa.codigo);
+    return Boolean(this.pessoa.id);
   }
 
   atualizarTituloEdicao(): void {
     this.title.setTitle(`Alterando Pessoa: ${this.pessoa.nome}`);
   }
 
-  carregarPessoa(codigo: number): void {
-    this.pessoaService.buscarPorCodigo(codigo)
+  carregarPessoa(id: number): void {
+    this.pessoaService.buscarPorId(id)
       .then(pessoa => {
         this.pessoa = pessoa;
         this.atualizarTituloEdicao();
@@ -64,7 +69,7 @@ export class PessoaCadastroComponent implements OnInit {
     .then(pessoaAdicionada => {
       this.messageService.add({ severity: 'success', detail: 'Pessoa adicionada com sucesso!' });
 
-      this.router.navigate(['/pessoas', pessoaAdicionada.codigo]);
+      this.router.navigate(['/pessoas', pessoaAdicionada.id]);
     })
     .catch(erro => this.errorHandlerService.handle(erro));
   }

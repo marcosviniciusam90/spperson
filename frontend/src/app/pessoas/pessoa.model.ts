@@ -1,22 +1,10 @@
 export class Pessoa {
-  codigo: number;
+  id: number;
   nome: string;
+  sexo = 'MASCULINO';
+  email: string;
+  dataNascimento: Date;
+  naturalidade: string;
+  nacionalidade: string;
   cpf: string;
-  ativo = true;
-  endereco = new Endereco();
-}
-
-class Endereco {
-  logradouro: string;
-  numero: string;
-  complemento: string;
-  bairro: string;
-  cep: string;
-  cidade: string;
-  estado: string;
-}
-
-export class PessoaResumo {
-  codigo: number;
-  nome: string;
 }
