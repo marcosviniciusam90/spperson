@@ -2,7 +2,7 @@
 > App para cadastro de pessoas
 
 ## Docker
-Tens a opção de subir o app usando o **docker-compose**, basta baixar o arquivo **docker-compose.yml** (raiz do repositório) e por linha de comando executar `docker-compose up` <br>
+Tens a opção de subir o app usando o **docker-compose**, basta baixar o arquivo **docker-compose.yml** (raiz do repositório) e por linha de comando executar `docker-compose up`. A aplicação ficará acessível pelo endereço http://localhost:4200 <br>
 Obs: as imagens necessárias serão baixadas diretamente do DockerHub
 
 ## Links
