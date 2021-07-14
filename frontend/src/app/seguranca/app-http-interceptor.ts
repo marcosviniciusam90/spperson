@@ -1,6 +1,6 @@
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, from, of } from 'rxjs';
+import { Observable, from} from 'rxjs';
 import { tap, catchError, mergeMap } from 'rxjs/operators';
 import { LoadingService } from '../core/loading/loading.service';
 
@@ -59,12 +59,12 @@ export class AppHttpInterceptor implements HttpInterceptor {
           this.loadingService.exibir(false);
         }
       }),
-      catchError((err: any) => {
+      catchError(err => {
         if (err instanceof HttpErrorResponse) {
           // algum tratamento global quando ocorre erro
           this.loadingService.exibir(false);
         }
-        return of(err);
+        throw err;
       })
     );
 

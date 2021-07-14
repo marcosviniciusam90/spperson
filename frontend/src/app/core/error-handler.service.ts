@@ -34,7 +34,11 @@ export class ErrorHandlerService {
       }
 
       try {
-        msg = errorResponse.error[0].mensagemUsuario;
+        msg = errorResponse.error.erro;
+
+        if(errorResponse.error.campos) {
+          msg = errorResponse.error.campos[0].mensagem;
+        }
       } catch (e) { }
 
     } else {
