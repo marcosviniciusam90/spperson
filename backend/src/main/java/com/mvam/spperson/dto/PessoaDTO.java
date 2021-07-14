@@ -6,10 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -33,6 +30,7 @@ public class PessoaDTO implements Serializable {
     private String email;
 
     @NotNull
+    @Past(message = "A data de nascimento deve ser uma data passada")
     private LocalDate dataNascimento;
 
     private String naturalidade;

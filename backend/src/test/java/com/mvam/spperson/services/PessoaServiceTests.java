@@ -5,7 +5,6 @@ import com.mvam.spperson.dto.PessoaDTO;
 import com.mvam.spperson.entities.Pessoa;
 import com.mvam.spperson.mappers.PessoaMapper;
 import com.mvam.spperson.repositories.PessoaRepository;
-import com.mvam.spperson.services.exceptions.PessoaComMesmoCPFException;
 import com.mvam.spperson.services.exceptions.RecursoNaoEncontradoException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -44,15 +43,6 @@ class PessoaServiceTests {
     }
 
     @Test
-    void dadoPessoaComCPFJaExistenteEntaoDeveLancarExcecaoAoCriar() {
-        PessoaDTO pessoaDTO = createPessoaDTO(null);
-
-        assertThrows(PessoaComMesmoCPFException.class, () -> pessoaService.create(pessoaDTO));
-
-        verify(pessoaRepository, times(0)).save(any(Pessoa.class));
-    }
-
-    @Test
     void dadoIdDePessoaNaoExistenteEntaoDeveLancarExcecaoAoBuscarPeloId() {
         long id = FAKER.number().randomNumber();
         when(pessoaRepository.findById(id)).thenReturn(Optional.ofNullable(any(Pessoa.class)));
@@ -66,26 +56,13 @@ class PessoaServiceTests {
         PessoaDTO pessoaDTO = createPessoaDTO(null);
         Pessoa previousPessoa = createPessoa(id);
 
-        when(pessoaRepository.findById(id)).thenReturn(Optional.of(previousPessoa));
+        when(pessoaRepository.getOne(id)).thenReturn(previousPessoa);
 
         Pessoa pessoa = PESSOA_MAPPER.dtoToEntity(pessoaDTO);
         pessoa.setId(previousPessoa.getId());
 
         pessoaService.update(id, pessoaDTO);
         verify(pessoaRepository, times(1)).save(pessoa);
-    }
-
-    @Test
-    void dadoPessoaComCPFJaExistenteEntaoDeveLancarExcecaoAoAtualizar() {
-        Long id = FAKER.number().randomNumber();
-        PessoaDTO pessoaDTO = createPessoaDTO(null);
-        Pessoa previousPessoa = createPessoa(id);
-
-        when(pessoaRepository.findById(id)).thenReturn(Optional.of(previousPessoa));
-
-        assertThrows(PessoaComMesmoCPFException.class, () -> pessoaService.update(id, pessoaDTO));
-
-        verify(pessoaRepository, times(0)).save(any(Pessoa.class));
     }
 
     @Test
