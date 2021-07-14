@@ -2,8 +2,10 @@
 > API REST para cadastro de pessoas
 
 ## Links
-- Coleção de requisições do Postman: [Link](https://github.com/marcosviniciusam90/spperson/blob/master/doc/SPPerson.postman_collection.json)
-- Imagem docker API: https://hub.docker.com/r/marcosviniciusam90/spperson
+- Coleção de requisições e variáveis do Postman: [Link](https://github.com/marcosviniciusam90/spperson/tree/master/backend/doc)
+
+### Aplicação (frontend) em produção
+- Endereço: https://mvam-spperson.netlify.app
 
 ### API em produção
 - Endereço: https://mvam-spperson.herokuapp.com
@@ -17,11 +19,13 @@
 - Swagger JSON: http://localhost:8080/api-docs
 - Swagger UI: http://localhost:8080/swagger-ui/index.html?url=/api-docs
 
-<h2 id="autorizacao">Como obter autorização para realizar requisições pelo Swagger?</h2>
+<h2 id="autorizacao">Como obter autorização e acesso à aplicação</h2>
 
-No swagger, quando a aplicação estiver rodando com OAuth2, clique no botão **Authorize** e informe os dados:
-- username/password: **marcos/marcos** ou **admin/admin**
-- client_id/client_secret: **react/react123**<br/><br/>
+Informe os dados:
+- Usuário/Senha: `marcos@gmail.com/marcos` ou `admin@gmail.com/admin`
+
+No swagger, clique no botão **Authorize**, além de usuário e senha, deverá ser informado também:
+- client_id/client_secret: **angular/angular123**<br/><br/>
 Obs: o usuário **marcos** só tem permissão para buscar informações (GET), já o usuário **admin** possui todas as permissões.
 
 ## O que foi utilizado?
@@ -40,3 +44,11 @@ Obs: o usuário **marcos** só tem permissão para buscar informações (GET), j
 - Spring OpenAPI (Swagger UI)
 - Spring MockMvc (para testar requisições REST)
 - Mockito
+
+## No frontend 
+- Angular 11
+- JavaScript/TypeScript
+- HTML
+- CSS
+- PrimeNG 11
+- NPM
