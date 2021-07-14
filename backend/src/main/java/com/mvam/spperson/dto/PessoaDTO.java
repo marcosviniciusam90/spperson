@@ -1,9 +1,10 @@
 package com.mvam.spperson.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -13,10 +14,11 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.time.LocalDate;
 
-@Data
-@Builder
-@AllArgsConstructor
+@Getter
+@Setter
+@SuperBuilder
 @NoArgsConstructor
+@AllArgsConstructor
 public class PessoaDTO implements Serializable {
 
     private Long id;

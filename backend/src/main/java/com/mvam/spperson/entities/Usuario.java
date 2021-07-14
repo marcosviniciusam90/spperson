@@ -1,22 +1,22 @@
 package com.mvam.spperson.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
-@Entity
-@Table(name = "tb_usuario")
-@Data
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Entity
+@Table(name = "tb_usuario")
 public class Usuario {
 
     @Id
+    @EqualsAndHashCode.Include
     private Long id;
 
     private String nome;
@@ -27,6 +27,6 @@ public class Usuario {
     @JoinTable(name = "tb_usuario_permissao",
             joinColumns = @JoinColumn(name = "id_usuario"),
             inverseJoinColumns = @JoinColumn(name = "id_permissao"))
-    private List<Permissao> permissoes;
+    private Set<Permissao> permissoes;
 
 }

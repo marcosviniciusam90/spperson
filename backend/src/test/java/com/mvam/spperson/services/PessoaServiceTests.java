@@ -37,8 +37,6 @@ class PessoaServiceTests {
     void dadoPessoaEntaoDeveCriarComSucesso() {
         PessoaDTO pessoaDTO = createPessoaDTO(null);
 
-        when(pessoaRepository.existsByCpf(pessoaDTO.getCpf())).thenReturn(false);
-
         Pessoa pessoa = PESSOA_MAPPER.dtoToEntity(pessoaDTO);
 
         pessoaService.create(pessoaDTO);
@@ -48,8 +46,6 @@ class PessoaServiceTests {
     @Test
     void dadoPessoaComCPFJaExistenteEntaoDeveLancarExcecaoAoCriar() {
         PessoaDTO pessoaDTO = createPessoaDTO(null);
-
-        when(pessoaRepository.existsByCpf(pessoaDTO.getCpf())).thenReturn(true);
 
         assertThrows(PessoaComMesmoCPFException.class, () -> pessoaService.create(pessoaDTO));
 
@@ -71,7 +67,6 @@ class PessoaServiceTests {
         Pessoa previousPessoa = createPessoa(id);
 
         when(pessoaRepository.findById(id)).thenReturn(Optional.of(previousPessoa));
-        when(pessoaRepository.existsByIdNotLikeAndCpf(id, pessoaDTO.getCpf())).thenReturn(false);
 
         Pessoa pessoa = PESSOA_MAPPER.dtoToEntity(pessoaDTO);
         pessoa.setId(previousPessoa.getId());
@@ -87,7 +82,6 @@ class PessoaServiceTests {
         Pessoa previousPessoa = createPessoa(id);
 
         when(pessoaRepository.findById(id)).thenReturn(Optional.of(previousPessoa));
-        when(pessoaRepository.existsByIdNotLikeAndCpf(id, pessoaDTO.getCpf())).thenReturn(true);
 
         assertThrows(PessoaComMesmoCPFException.class, () -> pessoaService.update(id, pessoaDTO));
 

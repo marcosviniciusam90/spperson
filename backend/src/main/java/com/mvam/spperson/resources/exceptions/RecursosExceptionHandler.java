@@ -42,12 +42,12 @@ public class RecursosExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErroDTO> methodArgumentNotValidException(MethodArgumentNotValidException ex, HttpServletRequest request) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
-        List<ErroDTO.Campos> fields = new ArrayList<>();
+        List<ErroDTO.Campo> fields = new ArrayList<>();
 
         for (ObjectError error : ex.getBindingResult().getAllErrors()) {
             String nome = ((FieldError) error).getField();
             String mensagem = messageSource.getMessage(error, LocaleContextHolder.getLocale());
-            fields.add(new ErroDTO.Campos(nome, mensagem));
+            fields.add(new ErroDTO.Campo(nome, mensagem));
         }
 
         String mensagem = "Um ou mais campos nao foram preenchidos corretamente";
@@ -55,7 +55,7 @@ public class RecursosExceptionHandler {
         return ResponseEntity.status(status).body(erroDTO);
     }
 
-    private ErroDTO criarErroDTO(HttpServletRequest request, HttpStatus status, String erro, String mensagem, List<ErroDTO.Campos> campos) {
+    private ErroDTO criarErroDTO(HttpServletRequest request, HttpStatus status, String erro, String mensagem, List<ErroDTO.Campo> campos) {
         return ErroDTO.builder()
                 .dataHora(Instant.now())
                 .status(status.value())

@@ -1,6 +1,8 @@
 package com.mvam.spperson.resources;
 
 import com.mvam.spperson.dto.PessoaDTO;
+import com.mvam.spperson.dto.PessoaInsertDTO;
+import com.mvam.spperson.dto.PessoaUpdateDTO;
 import com.mvam.spperson.resources.events.CriarRecursoEvent;
 import com.mvam.spperson.services.PessoaService;
 import lombok.AllArgsConstructor;
@@ -47,17 +49,17 @@ public class PessoaResource implements SwaggerSecuredRestController {
     @PreAuthorize("hasAuthority('ROLE_CADASTRAR_PESSOA') and #oauth2.hasScope('write')")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public PessoaDTO create(@Valid @RequestBody PessoaDTO pessoaDTO, HttpServletResponse response) {
-        pessoaDTO = pessoaService.create(pessoaDTO);
-        publisher.publishEvent(new CriarRecursoEvent(this, pessoaDTO.getId(), response));
-        return pessoaDTO;
+    public PessoaDTO create(@Valid @RequestBody PessoaInsertDTO insertDTO, HttpServletResponse response) {
+        PessoaDTO dto = pessoaService.create(insertDTO);
+        publisher.publishEvent(new CriarRecursoEvent(this, dto.getId(), response));
+        return dto;
     }
 
     @PreAuthorize("hasAuthority('ROLE_CADASTRAR_PESSOA') and #oauth2.hasScope('write')")
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public PessoaDTO update(@PathVariable Long id, @Valid @RequestBody PessoaDTO pessoaDTO) {
-        return pessoaService.update(id, pessoaDTO);
+    public PessoaDTO update(@PathVariable Long id, @Valid @RequestBody PessoaUpdateDTO updateDTO) {
+        return pessoaService.update(id, updateDTO);
     }
 
     @PreAuthorize("hasAuthority('ROLE_REMOVER_PESSOA') and #oauth2.hasScope('write')")

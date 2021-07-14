@@ -2,9 +2,9 @@ package com.mvam.spperson.services;
 
 import com.mvam.spperson.dto.PessoaDTO;
 import com.mvam.spperson.entities.Pessoa;
+import com.mvam.spperson.entities.Sexo;
 import com.mvam.spperson.mappers.PessoaMapper;
 import com.mvam.spperson.repositories.PessoaRepository;
-import com.mvam.spperson.services.exceptions.PessoaComMesmoCPFException;
 import com.mvam.spperson.services.exceptions.RecursoNaoEncontradoException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +14,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 
 @Service
@@ -37,32 +38,25 @@ public class PessoaService {
     }
 
     @Transactional
-    public PessoaDTO create(PessoaDTO pessoaDTO) {
-        String cpf = pessoaDTO.getCpf();
-        if(pessoaRepository.existsByCpf(cpf)) {
-            throw new PessoaComMesmoCPFException(cpf);
-        }
-        Pessoa pessoa = PESSOA_MAPPER.dtoToEntity(pessoaDTO);
-        pessoa = pessoaRepository.save(pessoa);
-        return PESSOA_MAPPER.entityToDTO(pessoa);
+    public PessoaDTO create(PessoaDTO dto) {
+        Pessoa entity = new Pessoa();
+        copyDtoToEntity(dto, entity);
+
+        entity = pessoaRepository.save(entity);
+        return PESSOA_MAPPER.entityToDTO(entity);
     }
 
     @Transactional
-    public PessoaDTO update(Long id, PessoaDTO pessoaDTO) {
-        Pessoa previousPessoa = pessoaRepository.findById(id)
-                .orElseThrow(() -> new RecursoNaoEncontradoException(id));
+    public PessoaDTO update(Long id, PessoaDTO dto) {
+        try {
+            Pessoa entity = pessoaRepository.getOne(id);
+            copyDtoToEntity(dto, entity);
 
-        String cpf = pessoaDTO.getCpf();
-        if(pessoaRepository.existsByIdNotLikeAndCpf(id, cpf)) {
-            throw new PessoaComMesmoCPFException(cpf);
+            entity = pessoaRepository.save(entity);
+            return PESSOA_MAPPER.entityToDTO(entity);
+        } catch (EntityNotFoundException ex) {
+            throw new RecursoNaoEncontradoException(id);
         }
-
-        Pessoa pessoa = PESSOA_MAPPER.dtoToEntity(pessoaDTO);
-        pessoa.setId(previousPessoa.getId());
-        pessoa.setCriadoEm(previousPessoa.getCriadoEm());
-        pessoa = pessoaRepository.save(pessoa);
-        return PESSOA_MAPPER.entityToDTO(pessoa);
-
     }
 
     @Transactional
@@ -72,5 +66,15 @@ public class PessoaService {
         } catch (EmptyResultDataAccessException ex) {
             throw new RecursoNaoEncontradoException(id);
         }
+    }
+
+    private void copyDtoToEntity(PessoaDTO dto, Pessoa entity) {
+        entity.setNome(dto.getNome());
+        entity.setSexo(Sexo.valueOf(dto.getSexo()));
+        entity.setEmail(dto.getEmail());
+        entity.setDataNascimento(dto.getDataNascimento());
+        entity.setNaturalidade(dto.getNaturalidade());
+        entity.setNacionalidade(dto.getNacionalidade());
+        entity.setCpf(dto.getCpf());
     }
 }

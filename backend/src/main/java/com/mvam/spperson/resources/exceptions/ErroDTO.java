@@ -19,12 +19,12 @@ public class ErroDTO implements Serializable {
     private String endereco;
     private String metodo;
 
-    private List<Campos> campos;
+    private List<Campo> campos;
 
     @Data
     @Builder
     @AllArgsConstructor
-    public static class Campos {
+    public static class Campo {
         private String nome;
         private String mensagem;
     }
