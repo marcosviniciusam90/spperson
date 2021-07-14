@@ -12,6 +12,7 @@ export class AuthService {
   tokenRevokeUrl = `${environment.apiUrl}/tokens/revoke`;
 
   jwtPayload: any;
+  loggedUserName: string;
 
 
   constructor(
@@ -33,6 +34,7 @@ export class AuthService {
       .toPromise()
       .then(response => {
         this.armazenarToken(response.access_token);
+        this.loggedUserName = response.userName;
       })
       .catch(response => {
         if (response.status === 400 && response.error.error === 'invalid_grant') {
@@ -54,6 +56,7 @@ export class AuthService {
       .toPromise()
       .then(response => {
         this.armazenarToken(response.access_token);
+        this.loggedUserName = response.userName;
         console.log('Novo access token criado!');
         return Promise.resolve(null);
       })
