@@ -1,0 +1,14 @@
+version: '3.4'
+services:
+    app:
+        image: marcosviniciusam90/spperson-angular:v1
+        container_name: spperson-angular
+        ports:
+          - 4200:80
+        depends_on:
+          - api
+    api:
+        image: marcosviniciusam90/spperson-api:v1
+        container_name: spperson-api
+        ports:
+          - 8080:8080
