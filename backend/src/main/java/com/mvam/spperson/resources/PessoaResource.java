@@ -27,7 +27,7 @@ public class PessoaResource implements SwaggerSecuredRestController {
 
     private final ApplicationEventPublisher publisher;
 
-    @PreAuthorize("hasAuthority('ROLE_PESQUISAR_PESSOA') and #oauth2.hasScope('read')")
+    @PreAuthorize("hasAnyRole('PESQUISAR_PESSOA') and #oauth2.hasScope('read')")
     @GetMapping
     public Page<PessoaDTO> findAllByNomeContaining(
             @RequestParam(required = false, defaultValue = "") String nome,
@@ -40,13 +40,13 @@ public class PessoaResource implements SwaggerSecuredRestController {
         return pessoaService.findAllByNomeContaining(nome, pageRequest);
     }
 
-    @PreAuthorize("hasAuthority('ROLE_PESQUISAR_PESSOA') and #oauth2.hasScope('read')")
+    @PreAuthorize("hasAnyRole('PESQUISAR_PESSOA') and #oauth2.hasScope('read')")
     @GetMapping("/{id}")
     public PessoaDTO findById(@PathVariable Long id) {
         return pessoaService.findById(id);
     }
 
-    @PreAuthorize("hasAuthority('ROLE_CADASTRAR_PESSOA') and #oauth2.hasScope('write')")
+    @PreAuthorize("hasAnyRole('CADASTRAR_PESSOA') and #oauth2.hasScope('write')")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public PessoaDTO create(@Valid @RequestBody PessoaInsertDTO insertDTO, HttpServletResponse response) {
@@ -55,14 +55,14 @@ public class PessoaResource implements SwaggerSecuredRestController {
         return dto;
     }
 
-    @PreAuthorize("hasAuthority('ROLE_CADASTRAR_PESSOA') and #oauth2.hasScope('write')")
+    @PreAuthorize("hasAnyRole('CADASTRAR_PESSOA') and #oauth2.hasScope('write')")
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public PessoaDTO update(@PathVariable Long id, @Valid @RequestBody PessoaUpdateDTO updateDTO) {
         return pessoaService.update(id, updateDTO);
     }
 
-    @PreAuthorize("hasAuthority('ROLE_REMOVER_PESSOA') and #oauth2.hasScope('write')")
+    @PreAuthorize("hasAnyRole('REMOVER_PESSOA') and #oauth2.hasScope('write')")
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {

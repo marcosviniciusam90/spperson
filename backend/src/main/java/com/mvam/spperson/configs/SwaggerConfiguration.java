@@ -73,7 +73,7 @@ public class SwaggerConfiguration {
     }
 
     private SecurityScheme securityScheme() {
-        if (Arrays.asList(environment.getActiveProfiles()).contains("oauth-security")) {
+        //if (Arrays.asList(environment.getActiveProfiles()).contains("oauth-security")) {
             return new SecurityScheme()
                     .type(SecurityScheme.Type.OAUTH2)
                     .flows(new OAuthFlows()
@@ -81,10 +81,10 @@ public class SwaggerConfiguration {
                                     .authorizationUrl(apiUrl + "/oauth/authorize")
                                     .tokenUrl(apiUrl + "/oauth/token")));
 
-        }
+        //}
 
-        return new SecurityScheme()
-                .type(SecurityScheme.Type.HTTP).scheme("basic");
+        //return new SecurityScheme()
+                //.type(SecurityScheme.Type.HTTP).scheme("basic");
 
     }
 }
