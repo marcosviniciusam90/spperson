@@ -33,7 +33,7 @@ class PessoaServiceTests {
     private PessoaService pessoaService;
 
     @Test
-    void dadoPessoaEntaoDeveCriarComSucesso() {
+    void createShouldCreatePersonWhenDataIsValid() {
         PessoaDTO pessoaDTO = createPessoaDTO(null);
 
         Pessoa pessoa = PESSOA_MAPPER.dtoToEntity(pessoaDTO);
@@ -43,7 +43,7 @@ class PessoaServiceTests {
     }
 
     @Test
-    void dadoIdDePessoaNaoExistenteEntaoDeveLancarExcecaoAoBuscarPeloId() {
+    void findByIdShouldReturnRecursoNaoEncontradoExceptionWhenPersonDoesNotExist() {
         long id = FAKER.number().randomNumber();
         when(pessoaRepository.findById(id)).thenReturn(Optional.ofNullable(any(Pessoa.class)));
 
@@ -51,7 +51,7 @@ class PessoaServiceTests {
     }
 
     @Test
-    void dadoPessoaEIdExistenteEntaoDeveAtualizarComSucesso() {
+    void updateShouldUpdatePersonWhenIdExistsAndDataIsValid() {
         Long id = FAKER.number().randomNumber();
         PessoaDTO pessoaDTO = createPessoaDTO(null);
         Pessoa previousPessoa = createPessoa(id);
@@ -66,14 +66,14 @@ class PessoaServiceTests {
     }
 
     @Test
-    void dadoIdDePessoaExistenteEntaoDeveExcluirComSucesso() {
+    void deleteShoudDeletePersonWhenIdExists() {
         Long id = FAKER.number().randomNumber();
         pessoaService.delete(id);
         verify(pessoaRepository, times(1)).deleteById(id);
     }
 
     @Test
-    void dadoIdDePessoaNaoExistenteEntaoDeveLancarExcecaoAoExcluir() {
+    void deleteShouldReturnRecursoNaoEncontradoExceptionWhenIdDoesNotExist() {
         Long id = FAKER.number().randomNumber();
 
         doThrow(EmptyResultDataAccessException.class).when(pessoaRepository).deleteById(id);

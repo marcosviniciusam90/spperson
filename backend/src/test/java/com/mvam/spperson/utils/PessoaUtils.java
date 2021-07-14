@@ -2,6 +2,7 @@ package com.mvam.spperson.utils;
 
 import com.github.javafaker.Faker;
 import com.mvam.spperson.dto.PessoaDTO;
+import com.mvam.spperson.dto.PessoaInsertDTO;
 import com.mvam.spperson.entities.Pessoa;
 import com.mvam.spperson.entities.Sexo;
 
@@ -29,6 +30,20 @@ public class PessoaUtils {
 
     public static PessoaDTO createPessoaDTO(Long codigo) {
         return PessoaDTO.builder()
+                .id(codigo)
+                .nome(FAKER.superhero().name())
+                .sexo(Sexo.MASCULINO.toString())
+                .email(FAKER.internet().emailAddress())
+                .dataNascimento(FAKER.date().birthday().toInstant().atZone(ZoneId.systemDefault()).toLocalDate())
+                .naturalidade(FAKER.address().cityName())
+                .nacionalidade(FAKER.address().country())
+                .cpf(FAKER.regexify(CPF_REGEX))
+                .build();
+
+    }
+
+    public static PessoaInsertDTO createPessoaInsertDTO(Long codigo) {
+        return PessoaInsertDTO.builder()
                 .id(codigo)
                 .nome(FAKER.superhero().name())
                 .sexo(Sexo.MASCULINO.toString())

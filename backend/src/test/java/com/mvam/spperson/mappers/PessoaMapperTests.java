@@ -15,7 +15,7 @@ class PessoaMapperTests {
     private static final PessoaMapper PESSOA_MAPPER = PessoaMapper.INSTANCE;
 
     @Test
-    void dadoDTOEntaoDeveConverterParaEntidade() {
+    void givenDTOThenMustConvertToEntity() {
         PessoaDTO pessoaDTO = createPessoaDTO(FAKER.number().randomNumber());
         Pessoa pessoa = PESSOA_MAPPER.dtoToEntity(pessoaDTO);
 
@@ -23,7 +23,7 @@ class PessoaMapperTests {
     }
 
     @Test
-    void dadoEntidadeEntaoDeveConverterParaDTO() {
+    void givenEntityThenMustConvertToDTO() {
         Pessoa pessoa = createPessoa(FAKER.number().randomNumber());
         PessoaDTO pessoaDTO = PESSOA_MAPPER.entityToDTO(pessoa);
 

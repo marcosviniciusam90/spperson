@@ -54,7 +54,7 @@ class PessoaResourceTests {
     }
 
     @Test
-    void quandoChamarGETPassandoIdEntaoDeveRetornarUmaPessoa() throws Exception {
+    void GETShouldReturnPersonWhenIdExists() throws Exception {
         Long id = FAKER.number().randomNumber();
         PessoaDTO pessoaDTOEsperado = createPessoaDTO(id);
 
@@ -73,7 +73,7 @@ class PessoaResourceTests {
     }
 
     @Test
-    void quandoChamarGETPassandoIdInexistenteEntaoDeveRetornarNotFound() throws Exception {
+    void GETShouldReturnNotFoundWhenIdDoesNotExist() throws Exception {
         Long id = FAKER.number().randomNumber();
 
         when(pessoaService.findById(id)).thenThrow(new RecursoNaoEncontradoException(id));
@@ -86,7 +86,7 @@ class PessoaResourceTests {
     }
 
     @Test
-    void quandoChamarDELETEPassandoIdEntaoDeveExcluirAPessoaCorrespondente() throws Exception {
+    void DELETEShouldDeleteSpecficPersonWhenIdExists() throws Exception {
         Long id = FAKER.number().randomNumber();
         mockMvc.perform(delete(API_URL_PATH + "/" + id))
                 .andExpect(status().isNoContent());
