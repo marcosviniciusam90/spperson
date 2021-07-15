@@ -19,7 +19,7 @@ export class AuthService {
     private http: HttpClient,
     private jwtHelper: JwtHelperService
   ) {
-    this.carregarToken();
+    this.carregarDadosLogin();
   }
 
   login(usuario: string, senha: string): Promise<void> {
@@ -33,8 +33,7 @@ export class AuthService {
         { headers, withCredentials: true })
       .toPromise()
       .then(response => {
-        this.armazenarToken(response.access_token);
-        this.loggedUserName = response.userName;
+        this.armazenarDadosLogin(response.access_token, response.userName);
       })
       .catch(response => {
         if (response.status === 400 && response.error.error === 'invalid_grant') {
@@ -55,8 +54,7 @@ export class AuthService {
         { headers, withCredentials: true })
       .toPromise()
       .then(response => {
-        this.armazenarToken(response.access_token);
-        this.loggedUserName = response.userName;
+        this.armazenarDadosLogin(response.access_token, response.userName);
         console.log('Novo access token criado!');
         return Promise.resolve(null);
       })
@@ -88,24 +86,31 @@ export class AuthService {
     return this.http.delete(this.tokenRevokeUrl, { withCredentials: true })
       .toPromise()
       .then(() => {
-        this.limparAccessToken();
+        this.limparDadosLogin();
       });
   }
 
-  private limparAccessToken(): void {
-    localStorage.removeItem('token');
+  private limparDadosLogin(): void {
     this.jwtPayload = null;
+    localStorage.removeItem('token');
+
+    this.loggedUserName = null;
+    localStorage.removeItem('userName');
   }
 
-  private armazenarToken(token: string): void {
+  private armazenarDadosLogin(token: string, userName: string): void {
     this.jwtPayload = this.jwtHelper.decodeToken(token);
     localStorage.setItem('token', token);
+
+    this.loggedUserName = userName;
+    localStorage.setItem('userName', userName);
   }
 
-  private carregarToken(): void {
+  private carregarDadosLogin(): void {
     const token = localStorage.getItem('token');
-    if (token) {
-      this.armazenarToken(token);
+    const userName = localStorage.getItem('userName');
+    if (token && userName) {
+      this.armazenarDadosLogin(token, userName);
     }
 
   }
