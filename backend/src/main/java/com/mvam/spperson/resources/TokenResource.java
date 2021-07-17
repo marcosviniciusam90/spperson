@@ -27,7 +27,7 @@ public class TokenResource implements SwaggerSecuredRestController {
                 .secure(isEnableHttps)		// se true, só irá aceitar HTTPS
                 .path(request.getContextPath() + "/oauth/token")
                 .maxAge(0)
-                .sameSite("Lax")
+                .sameSite(isEnableHttps ? "None": "Lax")
                 .build();
 
         response.setHeader(HttpHeaders.SET_COOKIE, cookie.toString());

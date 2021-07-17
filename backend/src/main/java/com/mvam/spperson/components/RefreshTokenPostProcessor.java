@@ -62,7 +62,7 @@ public class RefreshTokenPostProcessor implements ResponseBodyAdvice<OAuth2Acces
                 .secure(isEnableHttps)		// se true, só irá aceitar HTTPS
                 .path(request.getContextPath() + "/oauth/token")
                 .maxAge(2592000)
-                .sameSite("Lax")
+                .sameSite(isEnableHttps ? "None": "Lax")
                 .build();
 
         response.setHeader(HttpHeaders.SET_COOKIE, cookie.toString());
