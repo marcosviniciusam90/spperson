@@ -1,12 +1,14 @@
 package com.mvam.spperson.resources;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseCookie;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,14 +20,16 @@ public class TokenResource implements SwaggerSecuredRestController {
     private boolean isEnableHttps;
 
     @DeleteMapping("/revoke")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void revoke(HttpServletRequest request, HttpServletResponse response) {
-        Cookie cookie = new Cookie("refreshToken", null);
-        cookie.setHttpOnly(true);
-        cookie.setSecure(isEnableHttps); //se true, só irá aceitar HTTPS
-        cookie.setPath(request.getContextPath() + "/oauth/token");
-        cookie.setMaxAge(0);
+        ResponseCookie cookie = ResponseCookie.from("refreshToken", null)
+                .httpOnly(true)		// proíbe JavaScript de ler
+                .secure(isEnableHttps)		// se true, só irá aceitar HTTPS
+                .path(request.getContextPath() + "/oauth/token")
+                .maxAge(0)
+                .sameSite("Lax")
+                .build();
 
-        response.addCookie(cookie);
-        response.setStatus(HttpStatus.NO_CONTENT.value());
+        response.setHeader(HttpHeaders.SET_COOKIE, cookie.toString());
     }
 }
